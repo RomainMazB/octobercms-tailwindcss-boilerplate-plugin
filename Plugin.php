@@ -3,18 +3,18 @@
 
 namespace RomainMazB\TailwindBoilerplate;
 
-use Cms\Controllers\Index;
-use October\Rain\Support\Facades\Config;
 use System\Classes\PluginBase;
 use Cms\Classes\Theme;
 use Event;
 
 class Plugin extends PluginBase
 {
+    private $theme_name;
     public function boot()
     {
+        $this->theme_name = Theme::getEditThemeCode();
         Event::listen('cms.theme.getEditTheme', function () {
-            return 'romainmazb-tailwindcssboilerplate/src';
+            return $this->theme_name . '-src';
         });
     }
 }
