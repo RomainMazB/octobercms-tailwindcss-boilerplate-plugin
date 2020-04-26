@@ -4,16 +4,16 @@
 namespace RomainMazB\TailwindBoilerplate;
 
 use System\Classes\PluginBase;
+use Cms\Classes\Theme;
 use Event;
 
 class Plugin extends PluginBase
 {
-    private $theme_name;
     public function boot()
     {
-        $this->theme_name = Theme::getEditThemeCode();
-        Event::listen('cms.theme.getEditTheme', function () {
-            return $this->theme_name . '-src';
+        $theme_name = Theme::getEditThemeCode();
+        Event::listen('cms.theme.getEditTheme', static function () use ($theme_name) {
+            return $theme_name . '-src';
         });
     }
 }
