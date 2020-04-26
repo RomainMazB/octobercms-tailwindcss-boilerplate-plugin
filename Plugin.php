@@ -4,7 +4,6 @@
 namespace RomainMazB\TailwindBoilerplate;
 
 use System\Classes\PluginBase;
-use Cms\Classes\Theme;
 use Event;
 
 class Plugin extends PluginBase
